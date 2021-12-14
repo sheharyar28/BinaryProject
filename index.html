@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <title>Binary Calculation</title>
+    <style>
+      body {
+        background-image: url("images/background.png");
+      }
+
+      h1 {
+        text-align: center;
+      }
+      div {
+        padding: 20px;
+        margin-right: 15%;
+        margin-left: 15%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        background-color: rgb(0, 102, 102);
+        opacity: 0.9;
+        color: white;
+      }
+      input {
+        width: 100%;
+      }
+      #a1,
+      #a2,
+      #a3,
+      #a4,
+      #a5,
+      #a6,
+      #a7,
+      #a8 {
+        width: 15%;
+      }
+      #data1,
+      #data2,
+      #data3,
+      #data4,
+      #data5,
+      #data6,
+      #data7,
+      #data8 {
+        width: 15%;
+      }
+      img {
+        width: 17px;
+        height: 35px;
+        background-color: rgba(0, 0, 0, 0);
+      }
+      #bdata1,
+      #bdata2,
+      #bdata3,
+      #bdata4,
+      #bdata5,
+      #bdata6,
+      #bdata7,
+      #bdata8 {
+        width: 10%;
+      }
+      #bcal:hover {
+        background-color: rgb(255, 251, 0);
+      }
+      #bcal,
+      #bcomp:hover {
+        background-color: rgb(255, 251, 0);
+      }
+    </style>
+    <script>
+      function func() {
+        var x = document.getElementById("dec").value;
+        //var bin = parseInt((x >>> 0).toString(2));
+        var bin = Number(dec2bin(x));
+        if (bin.toString().length < 8) {
+          var less = 8 - bin.toString().length;
+          for (var i = 1; i <= less; i++) {
+            bin = "0" + bin;
+          }
+        } else {
+          bin = String(bin);
+        }
+        document.getElementById("a1234").innerHTML = bin;
+
+        document.getElementById("a1").innerHTML = bin.charAt(0);
+        document.getElementById("a2").innerHTML = bin.charAt(1);
+        document.getElementById("a3").innerHTML = bin.charAt(2);
+        document.getElementById("a4").innerHTML = bin.charAt(3);
+        document.getElementById("a5").innerHTML = bin.charAt(4);
+        document.getElementById("a6").innerHTML = bin.charAt(5);
+        document.getElementById("a7").innerHTML = bin.charAt(6);
+        document.getElementById("a8").innerHTML = bin.charAt(7);
+        //if (bin.toString().length < 8) {
+        if (bin.charAt(0) == "1") {
+          document.getElementById("img128").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img128").src = "images/bulboff.png";
+        }
+        if (bin.charAt(1) == "1") {
+          document.getElementById("img64").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img64").src = "images/bulboff.png";
+        }
+        if (bin.charAt(2) == "1") {
+          document.getElementById("img32").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img32").src = "images/bulboff.png";
+        }
+        if (bin.charAt(3) == "1") {
+          document.getElementById("img16").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img16").src = "images/bulboff.png";
+        }
+        if (bin.charAt(4) == "1") {
+          document.getElementById("img8").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img8").src = "images/bulboff.png";
+        }
+        if (bin.charAt(5) == "1") {
+          document.getElementById("img4").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img4").src = "images/bulboff.png";
+        }
+        if (bin.charAt(6) == "1") {
+          document.getElementById("img2").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img2").src = "images/bulboff.png";
+        }
+        if (bin.charAt(7) == "1") {
+          document.getElementById("img1").src = "images/bulbon.png";
+        } else {
+          document.getElementById("img1").src = "images/bulboff.png";
+        }
+      }
+      function math(ntn, number) {
+        var len = Math.floor(Math.log(number) / Math.LN10) - ntn;
+        return (number / Math.pow(10, len)) % 10 | 0;
+      }
+      function dec2bin(deci) {
+        return (deci >>> 0).toString(2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Binary Calculation Page</h1>
+    <table style="background-color: rgb(255, 153, 0); width: 100%">
+      <tr>
+        <td style="background-color: rgb(129, 160, 160); width: 10%" id="bcal">
+          <a href="index.html" style="text-decoration: none; color: black"
+            >Binary Calculation</a
+          >
+        </td>
+        <td style="width: 10%" id="bcomp">
+          <a href="bcomp.html" style="text-decoration: none; color: black"
+            >Binary Comparision</a
+          >
+        </td>
+        <td style="width: 30%"></td>
+      </tr>
+    </table>
+
+    <div>
+      <strong style="font-size: 17px"
+        >Enter the Decimal Number to be converted
+      </strong>
+      <br />
+      <input type="number" name="dec" id="dec" min="1" max="255" required />
+      <table>
+        <tr>
+          <td id="data1">128</td>
+          <td id="data2">64</td>
+          <td id="data3">32</td>
+          <td id="data4">16</td>
+          <td id="data5">8</td>
+          <td id="data6">4</td>
+          <td id="data7">2</td>
+          <td id="data8">1</td>
+        </tr>
+        <tr>
+          <td id="bdata1">
+            <img id="img128" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata2">
+            <img id="img64" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata3">
+            <img id="img32" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata4">
+            <img id="img16" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata5">
+            <img id="img8" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata6">
+            <img id="img4" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata7">
+            <img id="img2" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+          <td id="bdata8">
+            <img id="img1" src="images/bulboff.png" alt="Blub is Off" />
+          </td>
+        </tr>
+        <tr>
+          <td id="a1"></td>
+          <td id="a2"></td>
+          <td id="a3"></td>
+          <td id="a4"></td>
+          <td id="a5"></td>
+          <td id="a6"></td>
+          <td id="a7"></td>
+          <td id="a8"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <strong style="font-size: 17px"> Number in Binary Form: </strong>
+          </td>
+          <td id="a1234"></td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Calculate Binary" onclick="return func()" />
+    </div>
+  </body>
+</html>
